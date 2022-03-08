@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/essenstore-ofernandez/static/css/main.073c9b0a.css",
+    "main.js": "/essenstore-ofernandez/static/js/main.834178f6.js",
+    "static/js/787.76d3242a.chunk.js": "/essenstore-ofernandez/static/js/787.76d3242a.chunk.js",
+    "static/media/logo.svg": "/essenstore-ofernandez/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/essenstore-ofernandez/index.html",
+    "main.073c9b0a.css.map": "/essenstore-ofernandez/static/css/main.073c9b0a.css.map",
+    "main.834178f6.js.map": "/essenstore-ofernandez/static/js/main.834178f6.js.map",
+    "787.76d3242a.chunk.js.map": "/essenstore-ofernandez/static/js/787.76d3242a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.834178f6.js"
+  ]
+}
