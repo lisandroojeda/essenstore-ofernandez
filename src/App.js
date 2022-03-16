@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Abaut from "./components/pages/Abaut";
 import Catalog from "./components/pages/Catalog";
 import Contact from "./components/pages/Contact";
+import CartWidget from "./components/pages/CartWidget";
+import ItemListContainer from "./components/pages/ItemListContainer";
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path="/Abaut" element={<Abaut />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Catalog" element={<Catalog />} />
+          <Route path="/CartWidget" element={<ItemListContainer />} />
         </Routes>
       </Router>
       <header className="App-header">

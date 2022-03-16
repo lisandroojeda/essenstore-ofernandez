@@ -39,7 +39,7 @@ const NavBar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link"><BsCart3 /></a>
+              <Link className="nav-link active" to= '/CartWidget'><BsCart3 /></Link>
               </li>
             </ul>
           </div>
