@@ -23,8 +23,8 @@ const catalog = () => {
                         </div>
                     </div>
                     <div className="col justify-content-center mt-5 mb-5">
-                        <p>
                             <h1 className="h2">Cacerola 18cm con mango </h1>
+                            <p>
                             Estas Cacerolas con mango son ideales para preparaciones
                             de platos pequeños en familias entre 2 y 3 integrantes o como
                             complemento de piezas más grandes ya que en ellas se pueden realizar

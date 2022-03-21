@@ -6,8 +6,6 @@ import Abaut from "./components/pages/Abaut";
 import Catalog from "./components/pages/Catalog";
 import Contact from "./components/pages/Contact";
 import CartWidget from "./components/pages/CartWidget";
-import ItemListContainer from "./components/pages/ItemListContainer";
-import ItemCount from "./components/pages/ItemCount"
 import Sumate from "./components/pages/Sumate"
 
 
