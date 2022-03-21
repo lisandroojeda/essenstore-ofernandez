@@ -3,7 +3,7 @@ import React from "react";
 const cartWidget = () => {
     return (
         <div>
-            Catalogo
+            Carrito con los productos seleccionados del catalogo
         </div>
     )
 }

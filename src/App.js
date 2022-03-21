@@ -7,22 +7,26 @@ import Catalog from "./components/pages/Catalog";
 import Contact from "./components/pages/Contact";
 import CartWidget from "./components/pages/CartWidget";
 import ItemListContainer from "./components/pages/ItemListContainer";
+import ItemCount from "./components/pages/ItemCount"
+import Sumate from "./components/pages/Sumate"
+
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <NavBar />
+        <NavBar />
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/Abaut" element={<Abaut />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Catalog" element={<Catalog />} />
-          <Route path="/CartWidget" element={<ItemListContainer />} />
+          <Route path="/CartWidget" element={<CartWidget />} />
+          <Route path="/Sumate" element={<Sumate />} />
         </Routes>
       </Router>
       <header className="App-header">
-        <img src={logo} className="" width="25%" alt="logo"/>
+        <img src={logo} className="" width="25%" alt="logo" />
         <h1 className="mt-4">Pagina en construcción</h1>
       </header>
     </div>

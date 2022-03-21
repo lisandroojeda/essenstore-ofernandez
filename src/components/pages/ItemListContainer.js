@@ -1,10 +1,12 @@
 import React from "react";
 
 const itemListContainer = () => {
-    return (
-        <div>
-            Listado de Items adquiridos
-        </div>
-    )
-}
+  return (
+    <div>
+        
+    </div>
+  );
+};
 export default itemListContainer;
+
+
