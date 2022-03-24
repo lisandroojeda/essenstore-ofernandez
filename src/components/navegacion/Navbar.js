@@ -42,6 +42,11 @@ const NavBar = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link active" to='/ItemListContainer'>
+                  Items
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link active" to='/CartWidget'><BsCart3 /></Link>
               </li>
             </ul>

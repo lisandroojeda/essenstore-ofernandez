@@ -1,9 +1,9 @@
 import React from "react";
 
-const contact = () => {
+const contact = (props) => {
     return (
         <div>
-            Contacto
+            <h1>{props.saludo}</h1>
         </div>
     )
 }
