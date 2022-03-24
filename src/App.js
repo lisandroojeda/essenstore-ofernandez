@@ -1,5 +1,7 @@
 import logo from "./assets/logo/logoCompleto.png";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "./components/navegacion/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Abaut from "./components/pages/Abaut";
@@ -20,7 +22,7 @@ function App() {
           <Route path="/" element={<App />} />
           <Route path="/Abaut" element={<Abaut />} />
           <Route path="/Contact" element={<Contact saludo = {saludo}/>} />
-          <Route path="/ImteListContainer" element={<ItemListContainer />} />
+          <Route path="/ItemListContainer" element={<ItemListContainer />} />
           <Route path="/Catalog" element={<Catalog />} />
           <Route path="/CartWidget" element={<CartWidget />} />
           <Route path="/Sumate" element={<Sumate />} />
