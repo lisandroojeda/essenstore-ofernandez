@@ -10,6 +10,7 @@ import Contact from "./components/pages/Contact";
 import CartWidget from "./components/pages/CartWidget";
 import Sumate from "./components/pages/Sumate";
 import ItemListContainer from "./components/pages/ItemListContainer"
+import ApiExterna from "./components/apis/ApiExterna";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/Catalog" element={<Catalog />} />
           <Route path="/CartWidget" element={<CartWidget />} />
           <Route path="/Sumate" element={<Sumate />} />
+          <Route path="/ApiExterna" element={<ApiExterna />} />
         </Routes>
       </Router>
       <header className="App-header">
