@@ -2,12 +2,13 @@ import React from "react";
 import Logo from "../../assets/logo/logo.png";
 import { BsCart3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+
 const NavBar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link to='/'>
+          <Link to='/App'>
             <img src={Logo}></img>
           </Link>
           <button
@@ -23,8 +24,8 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav">
-            <li className="nav-item">
-                <Link className="nav-link active" to='/ApiExterna'>
+              <li className="nav-item">
+                <Link className="nav-link inactive" to='/ApiExterna'>
                   API
                 </Link>
               </li>
@@ -42,14 +43,21 @@ const NavBar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to='/Catalog'>
+                <Link className="nav-link d-none" to='/Catalog'>
                   Catalogo
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to='/ItemListContainer'>
-                  Items
+              <li className="nav-item dropdown">
+                <Link className="nav-link dropDown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" to='/ItemListContainer'>
+                  Productos
                 </Link>
+                <ul className="dropdown-menu">
+                  <li><Link className="dropdown-item" to="/Producto/terra">Linea Terra</Link></li>
+                  <li><Link className="dropdown-item" to="/Producto/aqua">Line Aqua</Link></li>
+                  <li><Link className="dropdown-item" to="/Producto/moca">Linea Moca</Link></li>
+                  <li><hr className="dropdown-divider"/></li>
+                  <li><Link className="dropdown-item" to="/Producto">Todas las Lineas</Link></li>
+                </ul>
               </li>
               <li className="nav-item">
                 <Link className="nav-link active" to='/CartWidget'><BsCart3 /></Link>
