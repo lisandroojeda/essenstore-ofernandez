@@ -10,7 +10,7 @@ const ItemDetail = ({ id, name, description, img, stock, price }) => {
   const handleNavigate = () => {
     navigate(-1) //vuelve una posicion para atras
   }
-  const pushCart = (cantidad) => {
+  const pushCart = () => {
     
     const itemToAdd = {
       id,
