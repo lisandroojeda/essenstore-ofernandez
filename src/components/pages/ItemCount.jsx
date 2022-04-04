@@ -1,41 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { DistributeVertical } from "react-bootstrap-icons";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-  const [contador, setContador] = useState(initial);
+const ItemCount = ({ max = 10,cantidad,setCantidad, onAdd}) => {
 
-  const click = (tipo) => {
-    if (tipo === "suma") {
-      if (contador < stock && contador >= 0) {
-        setContador(contador+1);
-      } else {
-        return;
-      }
-    }
-    if (tipo === "resta") {
-      if (contador <= stock && contador >= 1) {
-        setContador(contador-1);
-      } else {
-        return;
-      }
-    }
-  };
 
-  const addToCart = (contador) => {
-    onAdd(contador);
+  const handleAdd = () => {
+     cantidad < max &&  setCantidad(cantidad + 1)
+    
   };
+  const handleRemove = () => {
+    cantidad > 1 &&  setCantidad(cantidad - 1)
+    
+  }
 
   return (
     <div>
-      <div>
+      <div className="container">
         <h2> Imagen del Producto </h2>
-        <p>{contador}</p>
-        <button onClick={() => click("suma")}>Sumar</button>
-        <button onClick={() => click("resta")}>Restar</button>
+        <button className = "btn btn-primary mx-3" onClick={handleRemove}>-</button>
+        <span>{cantidad}</span>
+        <button className = "btn btn-primary mx-3" onClick={handleAdd}>+</button>
       </div>
-      <div>
-          <button onClick={() =>addToCart(contador)}>Agregar al Carrito</button>
-      </div>
+      <br/>
+      <button className="btn btn-primary" onClick={onAdd}>Agregar al carrito</button>
     </div>
   );
 };

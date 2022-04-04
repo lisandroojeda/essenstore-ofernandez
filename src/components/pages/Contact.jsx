@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const contact = (props) => {
+const Contact = (props) => {
+    const [isMobile, setIsMobile] = useState(false);
+    const checkMobile = () => {
+        if (window.visualViewport.width < 552) {
+            setIsMobile(true)
+        } else {
+            setIsMobile(false)
+        }
+    }
+    useEffect(() => {
+        checkMobile()
+
+        window.addEventListener('resize', checkMobile) //cada vez que hago una modificacion en pantalla se vuelve a checkear
+        return () => {
+            window.removeEventListener('resize', checkMobile)
+        }
+    }, [])
+
     return (
         <div>
             <h1>{props.saludo}</h1>
+            {isMobile ? <h4>Formulario de Contacto Mobile</h4> : <h4>Formulario de Contacto Desktop</h4>}
+
         </div>
     )
 }
-export default contact
+export default Contact

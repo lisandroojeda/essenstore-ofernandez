@@ -24,11 +24,7 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link inactive" to='/ApiExterna'>
-                  API
-                </Link>
-              </li>
+              
               <li className="nav-item">
                 <Link className="nav-link active" to='/Abaut'>
                   Quienes Somos?

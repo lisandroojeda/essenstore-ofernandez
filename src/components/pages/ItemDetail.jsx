@@ -1,16 +1,27 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import ItemCount from "./ItemCount";
 
-const onAdd = (contador) => {
-  console.log("Agrega al Carrito la cantida de ", contador);
-};
 const ItemDetail = ({ id, name, description, img, stock, price }) => {
-  const initial = 0;
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
+  const [cantidad, setCantidad] = useState(1);
+
   const handleNavigate = () => {
     navigate(-1) //vuelve una posicion para atras
   }
+  const pushCart = (cantidad) => {
+    
+    const itemToAdd = {
+      id,
+      name,
+      price,
+      img,
+      cantidad
+    }
+    console.log(itemToAdd)
+  }
+
   return (
 
     <div className="d-flex flex-wrap m-5 justify-content-center">
@@ -30,7 +41,12 @@ const ItemDetail = ({ id, name, description, img, stock, price }) => {
         </div>
       </div>
       <div className="mt-5 mb-5">
-        <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+        <ItemCount 
+          stock={stock} 
+          cantidad = {cantidad}
+          setCantidad = {setCantidad}
+          onAdd = {pushCart}
+        />
       </div>
       <div className="mt-5 mb-5">
         <button className="btn btn-primary" onClick={handleNavigate}>Volver</button>
