@@ -1,4 +1,4 @@
-import logo from "./assets/logo/logoCompleto.png";
+import logo from "./assets/portada/portada.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -13,9 +13,9 @@ import ItemListContainer from "./components/pages/ItemListContainer"
 import ApiExterna from "./components/apis/ApiExterna";
 import Footer from "./components/pages/Footer"
 import ItemDetailContainer from "./components/pages/ItemDetailContainer";
-
+import Home from "./components/pages/Home";
 function App() {
-  const saludo= "hola after"
+  const saludo= "Proximamente Formulario de contacto"
   return (
     <div className="App">
       <BrowserRouter>
@@ -29,14 +29,10 @@ function App() {
           <Route path="/Catalog" element={<Catalog />} />
           <Route path="/CartWidget" element={<CartWidget />} />
           <Route path="/Sumate" element={<Sumate />} />
-          <Route path="/ApiExterna" element={<ApiExterna />} />
           <Route path="/ItemDetailContainer/:id" element={<ItemDetailContainer />} />
         </Routes>
       </BrowserRouter>
-      <header className="App-header">
-        <img src={logo} className="" width="25%" alt="logo" />
-        <h1 className="mt-4">Pagina en construcción</h1>
-      </header>
+      {<Home logo = {logo}/>}
       {<Footer/>}
     </div>
   );
