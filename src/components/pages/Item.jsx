@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 const Item = ({ product }) => {
     let id = product.id;
     return (
-        <div clasName=" m-3">
+        <div className=" m-3">
             <Link to={'/ItemDetailContainer/'+ id}>
             <button >
                 <div className="card border-info m-3" style={{ width: '18rem' }}>
