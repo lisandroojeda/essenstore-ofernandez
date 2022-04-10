@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Contact = (props) => {
+const Contact = () => {
     const [isMobile, setIsMobile] = useState(false);
     const checkMobile = () => {
         if (window.visualViewport.width < 552) {
@@ -20,7 +20,7 @@ const Contact = (props) => {
 
     return (
         <div>
-            <h1>{props.saludo}</h1>
+            <h1>Hola</h1>
             {isMobile ? <h4>Formulario de Contacto Mobile</h4> : <h4>Formulario de Contacto Desktop</h4>}
 
         </div>
