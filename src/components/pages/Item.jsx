@@ -7,7 +7,6 @@ const Item = ({ product }) => {
         <div className=" m-3">
             <Link to={'/ItemDetailContainer/' + id}>
                 <button >
-
                     <div className="card" style={{ width: '18rem' }}>
                         <img src={product.img} className="card-img-top" alt={product.name} />
                         <div className="card-body">

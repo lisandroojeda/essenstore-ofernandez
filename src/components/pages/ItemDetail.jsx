@@ -6,12 +6,11 @@ import { Link } from "react-router-dom";
 
 const ItemDetail = ({ id, name, description, img, stock, price }) => {
   const { cart, addItem, isInCart } = useContext(CartContext);
-  console.log(isInCart(id));
 
+  console.log(cart);
 
   const navigate = useNavigate();
   const [cantidad, setCantidad] = useState(1);
-
   const handleNavigate = () => {
     navigate(-1); //vuelve una posicion para atras
   };
@@ -26,7 +25,6 @@ const ItemDetail = ({ id, name, description, img, stock, price }) => {
     };
 
     addItem(itemToAdd);
-    console.log(itemToAdd);
   };
 
   return (
@@ -52,8 +50,8 @@ const ItemDetail = ({ id, name, description, img, stock, price }) => {
             onAdd={pushCart}
           />
         ) : (
-          <Link className="btn btn-success m-4" to="/cartWidget">
-            Finalizar Compra{" "}
+          <Link className="btn btn-success m-4" to="/cart">
+            Finalizar Compra
           </Link>
         )}
       </div>
