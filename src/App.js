@@ -20,11 +20,10 @@ function App() {
 
   return (
     <CartProvider>
-      <div className="page-container" styel={{height:"100vh"}}>
+      <div className="page-container" styel={{ height: "100vh" }}>
         <div className="content-wrap">
           <BrowserRouter>
             <NavBar />
-            {<Home logo={logo} logo2={logo2} />}
             <div className="container">
               <Routes>
                 <Route path="/" element={<App />} />
@@ -39,6 +38,7 @@ function App() {
               </Routes>
             </div>
           </BrowserRouter >
+          {<Home logo={logo} logo2={logo2} />}
         </div >
         {< Footer />}
       </div>
