@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { getProducts } from '../../mocks/FakeApi'
-import ItemDetail from './ItemDetail'
-import Loading from './Loading'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import Loading from "./Loading"
+import { useParams } from "react-router-dom"
+import { db } from "../../firebase/config"
+import { doc, getDoc } from "firebase/firestore"
+import ItemDetail from "./ItemDetail"
+import {container} from "react-bootstrap"
 
 const ItemDetailContainer = () => {
-    const [productDetail, setProductDetail] = useState({}); //inicializacion de un obejto vacio
-    const [loading, setLoading] = useState(false);
-    const { id } = useParams();
-    useEffect(() => {
-        setLoading(true);
-        getProducts
-            .then((res) => setProductDetail((res).find((item) => item.id === id))) //seteo el producto'''))))
-            .catch((error) => console.log(error))
-            .finally(() => setLoading(false));
-    }, [id]);
-    return (
+  const [item, setItem] = useState(null) //inicializacion de un obejto vacio
+  const [loading, setLoading] = useState(true)
 
-        <div>
-            {loading ? <Loading /> : <ItemDetail {...productDetail} />}
-        </div>
-    )
+  const { id } = useParams()
+
+  console.log("itemId", id)
+  useEffect(() => {
+    setLoading(true)
+    const docRef = doc(db, "products", id)
+    getDoc(docRef)
+      .then(doc => {
+        const  prod = {id: doc.id, ...doc.data()}
+        setItem(prod)
+      })
+      .finally(() => { setLoading(false) })
+        
+    
+  }, [id])
+
+  return <div className="container">{loading ? <Loading /> : <ItemDetail {...item} />}</div>
 }
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

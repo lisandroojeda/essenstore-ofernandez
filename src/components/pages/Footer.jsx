@@ -1,26 +1,53 @@
-import React from 'react'
+import React from "react";
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsWhatsapp } from "react-icons/bs";
-import "./Footer.css"
+import "./Footer.css";
 const Footer = () => {
   return (
     <div className="main-footer">
       <div className="container ">
         <div className="row">
-          <section className="mb-4" >
-            <a className="btn  mx-5" href="#!" role="button" style={{ color: "white" }}><BsWhatsapp size={50} /></a>
-            <a className="btn  mx-5" href="#!" role="button" style={{ color: "white" }}><BsInstagram size={50} /></a>
-            <a className="btn  mx-5" href="#!" role="button" style={{ color: "white" }}> <BsFacebook size={50} /></a>
+          <section className="mb-4">
+            <a
+              className="btn  mx-5"
+              href="#!"
+              role="button"
+              style={{ color: "white" }}
+            >
+              <BsWhatsapp size={50} />
+            </a>
+            <a
+              className="btn  mx-5"
+              href="#!"
+              role="button"
+              style={{ color: "white" }}
+            >
+              <BsInstagram size={50} />
+            </a>
+            <a
+              className="btn  mx-5"
+              href="#!"
+              role="button"
+              style={{ color: "white" }}
+            >
+              {" "}
+              <BsFacebook size={50} />
+            </a>
           </section>
         </div>
-        <div className="text-center p-3  " style={{ background_color: "rgba(0, 0, 0, 0.2)" }}>
+        <div
+          className="text-center p-3  "
+          style={{ background_color: "rgba(0, 0, 0, 0.2)" }}
+        >
           © 2022 Copyright:
-          <a className="text-white" href="https://mdbootstrap.com/">Licho</a>
+          <a className="text-white" href="https://mdbootstrap.com/">
+            Licho
+          </a>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

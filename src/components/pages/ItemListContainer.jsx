@@ -2,28 +2,37 @@ import React, { useEffect, useState } from "react";
 
 import ItemList from "./ItemList";
 import Loading from "./Loading";
-import { getProducts } from "../../mocks/FakeApi"; //siempre que exporto si no es desde el default lo importa con llaves
 import ItemDetailContainer from "./ItemDetailContainer";
 import { useParams } from "react-router-dom";
 import ScrollIntoView from "react-scroll-into-view";
+import { collection, getDocs,query,where } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 function ItemListContainer() {
-  const { categoryId } = useParams();
+
+
   const [listProduct, setListProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { categoryId } = useParams();
   //siempre que se actualice la vista
   useEffect(() => {
     setLoading(true);
-    getProducts
-      .then((res) => {
-        if (categoryId) {
-          setListProduct(res.filter((prod) => prod.category === categoryId));
-        } else {
-          setListProduct(res);
-        }
-      }) //seteo los productos
-      .catch((error) => console.log(error)) //capturo el error
-      .finally(() => setLoading(false)); //detengo el loading
+
+    // referencia ,que quiero traer, que coleccionada
+    const productsRef = collection(db, "products");
+
+    const q = categoryId ? query(productsRef,where ("category", "==", categoryId)) : productsRef;
+    // llaamamos a esa referencia
+    getDocs(q)
+      .then((resp) => {
+        //retorno un objeto compuesto de una promesa conformada por id y todos los datos del firebase con un spread
+        const items = resp.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log(items);
+        setListProduct(items);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [categoryId]);
   return (
     <div>

@@ -20,7 +20,7 @@ function App() {
 
   return (
     <CartProvider>
-      <div className="page-container" styel={{ height: "100vh" }}>
+      <div className="page-container" style={{ height: "100vh" }} >
         <div className="content-wrap">
           <BrowserRouter>
             <NavBar />

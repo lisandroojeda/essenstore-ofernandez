@@ -1,11 +1,14 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Loading.css";
 const loading = () => {
-    return (
-        <div className="spinner-grow" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </div>
-    )
-}
+  return (
+    <div className="loader-wrapper">
+      <div className="loader" role="status">
+        <div className="loader loader-inner "> </div>
+      </div>
+    </div>
+  );
+};
 
-export default loading
+export default loading;
