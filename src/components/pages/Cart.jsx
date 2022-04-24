@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { BsTrashFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 function Cart() {
   const { cart, cartTotal, emptyCart, removeItem } = useContext(CartContext);
   console.log("Elementos a mostrar", cart);
@@ -30,6 +31,9 @@ function Cart() {
       <button className="btn btn-danger m-3" onClick={emptyCart}>
         Cancelar Compra
       </button>
+      <Link className="btn btn-success m-4" to="/checkout">
+        Finalizar Compra
+      </Link>
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
 const Item = ({ product }) => {
-
+    
     let id = product.id;
     console.log("Pasando el di",id)
     return (
         <div className=" m-3">
+            
             <Link to={'/ItemDetailContainer/'+id}>
                 <button >
                     <div className="card" style={{ width: '18rem' }}>
