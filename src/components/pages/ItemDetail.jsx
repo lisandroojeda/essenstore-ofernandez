@@ -40,9 +40,7 @@ const ItemDetail = ({ id, name, description, img, stock, price }) => {
           <p>{description}</p>
           <h4>Precio = {price} $</h4>
           <h4>Stock = {stock}</h4>
-        </div>
-      </div>
-      <div className="mt-5 mb-5">
+          <div className="mt-5 mb-5">
         {!isInCart(id) ? (
           <ItemCount
             stock={stock}
@@ -60,6 +58,8 @@ const ItemDetail = ({ id, name, description, img, stock, price }) => {
         <button className="btn btn-primary m-4" onClick={handleNavigate}>
           Volver
         </button>
+      </div>
+        </div>
       </div>
     </div>
   );

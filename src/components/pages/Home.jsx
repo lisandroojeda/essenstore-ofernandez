@@ -2,7 +2,10 @@ import React from "react";
 
 const home = ({ logo, logo2 }) => {
   return (
-    <div className="rounded mx-auto d-block img-fluid shadow-sm p-3 mb-5 d-block p-5">
+    <div
+      className="rounded mx-auto d-block img-fluid shadow-sm p-3 mb-5 d-block p-5"
+      style={{ marginBottom: "20px" }}
+    >
       <img src={logo} alt="logo" />
     </div>
   );

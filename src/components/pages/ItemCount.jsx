@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { DistributeVertical } from "react-bootstrap-icons";
 
-const ItemCount = ({ max = 10, cantidad, setCantidad, onAdd }) => {
+const ItemCount = ({ stock , cantidad, setCantidad, onAdd }) => {
   const handleAdd = () => {
-    cantidad < max && setCantidad(cantidad + 1);
+    cantidad < stock && setCantidad(cantidad + 1);
   };
   const handleRemove = () => {
     cantidad > 1 && setCantidad(cantidad - 1);

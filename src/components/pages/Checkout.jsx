@@ -2,20 +2,26 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { db } from "../../firebase/config";
 import {
+  writeBatch,
+  query,
+  where,
+  documentId,
   collection,
   addDoc,
   Timestamp,
   updateDoc,
-  getDoc,
+  getDocs,
   doc,
 } from "firebase/firestore";
-import { Navigate, Link } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
+import { Navigate, Link, useNavigate } from "react-router-dom";
+import { Windows } from "react-bootstrap-icons";
 
 const Checkout = () => {
   const { cart, cartTotal, emptyCart } = useContext(CartContext);
 
   const [orderId, setOrderId] = useState(null);
-
+  const navigate = useNavigate();
   const [name, setNombre] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -30,7 +36,10 @@ const Checkout = () => {
     setPhone(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleNavigate = () => {
+    navigate(-2); //vuelve una posicion para atras
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault(); //evita uqe se recargue la pagina
 
     const order = {
@@ -44,27 +53,67 @@ const Checkout = () => {
       date: Timestamp.fromDate(new Date()),
     };
 
+    const batch = writeBatch(db);
     const orderRef = collection(db, "orders");
+    const productosRef = collection(db, "products");
 
-    cart.forEach((item) => {
-      const docRef = doc(db, "products", item.id);
-      console.log(docRef);
-      getDoc(docRef).then((doc) => {
-        if (doc.data.stock >= item.cantidad) {
-          updateDoc(docRef, {
-            stock: doc.data().stock - item.cantidad,
-          });
-        } else {
-          alert("No hay stock suficiente");
-        }
-      });
+    const q = query(
+      productosRef,
+      where(
+        documentId(),
+        "in",
+        cart.map((item) => item.id)
+      )
+    );
 
+    const productos = await getDocs(q);
+
+    const outOfStock = [];
+
+    productos.docs.forEach((doc) => {
+      const intemInCart = cart.find((item) => item.id === doc.id);
+      if (doc.data().stock >= intemInCart.cantidad) {
+        batch.update(doc.ref, {
+          stock: doc.data().stock - intemInCart.cantidad,
+        });
+      } else {
+        outOfStock.push(intemInCart);
+      }
+    });
+
+    if (outOfStock.length === 0) {
+      batch.commit();
       addDoc(orderRef, order).then((doc) => {
-        console.log("Documento creado con ID: ", doc.id);
         setOrderId(doc.id);
         emptyCart();
       });
-    });
+    } else {
+      toast.error(`No hay suficiente Stock para ${outOfStock.map((item) => item.name)}`, {
+        type: "error",
+        autoClose: false,
+        style: {
+          borderRadius: "10px",
+          background: "black",
+          color: "#fff",
+          fontSize: "1.2rem",
+          padding: "10px",
+        },
+        position: "top-right",
+      });
+    }
+
+    // cart.forEach((item) => {
+    //   const docRef = doc(db, "products", item.id);
+    //   console.log(docRef);
+    // getDoc(docRef).then((doc) => {
+    //   if (doc.data.stock >= item.cantidad) {
+    //     updateDoc(docRef, {
+    //       stock: doc.data().stock - item.cantidad,
+    //     });
+    //   } else {
+    //     alert("No hay stock suficiente");
+    //   }
+    // });
   };
 
   if (orderId) {
@@ -113,6 +162,19 @@ const Checkout = () => {
           Enviar
         </button>
       </form>
+      <Toaster
+        toastOptions={{
+          success: {
+            // onClick: () => {
+            //  handleNavigate();
+            //  },
+            iconTheme: {
+              primary: "green",
+              secondary: "black",
+            },
+          },
+        }}
+      />
     </div>
   );
 };

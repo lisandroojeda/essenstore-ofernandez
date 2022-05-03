@@ -1,11 +1,9 @@
 import logo from "./assets/portada/portada.png";
 import logo2 from "./assets/portada/iimm.jpg";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import NavBar from "./components/pages/Navbar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Abaut from "./components/pages/Abaut";
+import Abaut from "./components/pages/Abaut/Abaut";
 import Catalog from "./components/pages/Catalog";
 import Contact from "./components/pages/Contact";
 import Sumate from "./components/pages/Sumate";
@@ -21,7 +19,7 @@ function App() {
 
   return (
     <CartProvider>
-      <div className="page-container" style={{ height: "100vh" }} >
+      <div className="page-container">
         <div className="content-wrap">
           <BrowserRouter>
             <NavBar />

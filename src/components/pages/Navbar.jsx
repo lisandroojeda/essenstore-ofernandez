@@ -2,6 +2,8 @@ import React from "react";
 import Logo from "../../assets/logo/logo.png";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 const NavBar = () => {
   return (
     <div>
@@ -24,6 +26,10 @@ const NavBar = () => {
           <div
             className="collapse navbar-collapse justify-content-end"
             id="navbarNav"
+            style={{
+              ///mas atributos
+              fontSize: "1.5em",
+            }}
           >
             <ul className="navbar-nav">
               <li className="nav-item">
